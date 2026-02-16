@@ -1,0 +1,60 @@
+﻿@model IEnumerable<PruebaBellaVista.Models.Producto>
+
+@{
+    ViewData["Title"] = "Gestión de Productos";
+}
+
+<h1>Listado de Productos</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crear Nuevo Producto</a>
+    <a asp-action="InventarioCompleto" class="btn btn-secondary">Ver Todos Los Registros</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.NombreProducto)</th>
+            <th>@Html.DisplayNameFor(model => model.Presentacion)</th>
+            <th>@Html.DisplayNameFor(model => model.Precio)</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="@(item.Activo == false ? "table-secondary text-muted" : "")">
+                <td>@Html.DisplayFor(modelItem => item.NombreProducto)</td>
+                <td>@Html.DisplayFor(modelItem => item.Presentacion)</td>
+                <td>Q @Html.DisplayFor(modelItem => item.Precio)</td>
+                <td>
+                    @if (item.Activo == true)
+                    {
+                        <span class="badge bg-success">Activado</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Desactivado</span>
+                    }
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a asp-action="Edit" asp-route-id="@item.IdProducto" class="btn btn-sm btn-warning">Edit</a>
+
+                        @if (item.Activo == false)
+                        {
+                            <form asp-action="Reactivar" asp-route-id="@item.IdProducto" method="post" style="display:inline;" class="ms-1">
+                                <button type="submit" class="btn btn-sm btn-success">Activar</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <a asp-action="Delete" asp-route-id="@item.IdProducto" class="btn btn-sm btn-danger ms-1">Delete</a>
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

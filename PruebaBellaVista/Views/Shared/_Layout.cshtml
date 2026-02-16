@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Bellavista Coffee</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PruebaBellaVista.styles.css" asp-append-version="true" />
+    <style>
+        /* Estilo Dark Mode Profesional */
+        body {
+            background-color: #000000; /* Negro total para el fondo */
+            color: #ffffff;
+        }
+
+        .navbar {
+            background-color: #1a1a1a ! !important; /* Gris muy oscuro para la barra */
+            border-bottom: 1px solid #333 !important;
+        }
+
+        .navbar-brand, .nav-link {
+            color: #ffffff !important;
+        }
+
+        .main-container {
+            background-color: #121212; /* Gris oscuro para el contenedor de datos */
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid #222;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-top: 30px;
+            margin-bottom: 50px;
+        }
+        /* Ajuste para que las tablas se vean bien en negro */
+        .table {
+            color: #ffffff;
+        }
+
+        h1, h2, h3, h4 {
+            color: #ffffff;
+        }
+
+        footer {
+            background-color: #000000 !important;
+            border-top: 1px solid #222 !important;
+            color: #666 !important;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
+            <div class="container-fluid text-center">
+                <a class="navbar-brand fw-bold mx-auto" asp-area="" asp-controller="Home" asp-action="Index">Bellavista Coffee</a>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3 main-container">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container text-center py-3">
+            &copy; 2026 - Bellavista Coffee - Gestión de Inventario
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
